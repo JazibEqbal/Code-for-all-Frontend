@@ -3,6 +3,7 @@ import styles from "./NavBar.module.css";
 import { Link } from "react-router-dom";
 function NavBar() {
   return (
+    <div className={styles.mainBlock}>
     <nav className={styles.navbar}>
       <Link to="/" className={styles.heading}>
         Home
@@ -17,6 +18,7 @@ function NavBar() {
         LeetCode
       </Link>
     </nav>
+    </div>
   );
 }
 

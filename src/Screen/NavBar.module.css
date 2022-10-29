@@ -1,24 +1,25 @@
+.mainBlock{
+    display: block;
+}
 .navbar{
     display: flex;
     justify-content: center;
     background-color: #fff;
     height: 72px;
-    max-width: 1440px;
-    margin: 0 auto;
     padding: 0 56px;
     z-index: 99;
     width: 100%;
     box-shadow: 0 2px 4px #00000026;
+    box-sizing: border-box;
+    letter-spacing: 0;
+    outline: 0;
+    position: fixed;
 }
 .heading{
     display: flex;
     text-decoration: none;
     align-items: center;
     padding: 15px;
-    color: brown;
     margin-left: 10px;
     color: #4a4a4a;
-    letter-spacing: 0;
-    outline: 0;
-    box-sizing: border-box;
 }
