@@ -1,5 +1,4 @@
 import React from "react";
-import Advertisement from "./Advertisement";
 import NavBar from "./NavBar";
 import Recent from "./Recent";
 
@@ -8,7 +7,6 @@ function Dashboard() {
     <div>
       <NavBar />
       <Recent />
-      <Advertisement />
     </div>
   );
 }

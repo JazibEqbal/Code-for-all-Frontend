@@ -5,11 +5,12 @@ function Recent() {
     <div className={styles.mainDiv}>
       <div className={styles.recentContainer}>
         <div className={styles.recentContents}>
-          {/* <h1>hdhdhd</h1> */}
-          <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt="img" />
-          
+          <h3>rc-1 This is first contest</h3>
+          <h3>rc-2</h3>
+          <h3>rc-3</h3>
         </div>
       </div>
+      <div className={styles.advertisement}>Advertisement goes here</div>
     </div>
   );
 }
