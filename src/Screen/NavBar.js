@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 function NavBar() {
   return (
     <nav className={styles.navbar}>
+      <Link to="/" className={styles.heading}>
+        Home
+      </Link>
       <Link to="/codechef" className={styles.heading}>
         CodeChef
       </Link>
