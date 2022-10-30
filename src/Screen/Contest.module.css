@@ -1,0 +1,16 @@
+.contestsMain{
+    display: flex;
+    margin-left: 100px;
+    box-shadow: 0 2px 4px #00000026;
+    margin-top: 20px;
+    width: 56.5%;
+    border-radius: 7px;
+    border: .5px solid gray;
+}
+.contestNames > h3{
+    padding: 5px;
+    margin: 10px;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: #4a4a4a;
+}
