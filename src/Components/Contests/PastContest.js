@@ -4,8 +4,8 @@ import styles from "./PastContest.module.css";
 
 const PastContests = (props) => {
   const renderList = props.contestList.map((contest) => (
-    <div>
-      <h4 key={contest.id}>
+    <div key={contest.id}>
+      <h4>
         {contest.contestname}
         <Link to={`/question/${contest.id}`} state={{ contest }}>
           Solutions
