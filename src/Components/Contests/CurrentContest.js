@@ -9,13 +9,13 @@ const CurrentContest = (props) => {
       return (
         <React.Fragment>
           <div className={styles.CurrentContestMain}>
-            <h2>Ongoing Contest</h2>
-            <p className={styles.innerCurrentContestMain}>
+            <h2 className={styles.currentHeading}>Ongoing Contest</h2>
+            <h4 className={styles.innerCurrentContestMain}>
               {contest.contestname}
               <Link to={`/question/${contest.id}`} state={{ contest }}>
                 Solutions
               </Link>
-            </p>
+            </h4>
           </div>
         </React.Fragment>
       );

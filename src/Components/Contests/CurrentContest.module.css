@@ -1,6 +1,10 @@
 .CurrentContestMain{
+    display: flex;
+    flex-direction: column;
     margin: 40px;
 }
-.innerCurrentContestMain > p{
-    padding: 7px;
+.innerCurrentContestMain{
+    font-weight: 500;
+    display: flex;
+    margin: 5px 7px 0 7px;
 }

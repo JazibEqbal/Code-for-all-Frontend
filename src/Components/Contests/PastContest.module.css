@@ -1,7 +1,13 @@
 .pastContestMain{
-    margin: 40px;
+    display: flex;
+    flex-direction: column;
+}
+.pastHeading{
+    display: flex;
+    margin: 40px 40px 10px 40px;
 }
 .pastContestitems{
-    list-style-type: none;
-    padding: 7px;
+    margin: 0 25px;
+    padding:7px 0;
+    font-weight: 500;
 }
