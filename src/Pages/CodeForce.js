@@ -12,10 +12,12 @@ function CodeForce() {
     { id: 4, contestname: "Daily ka contest", date: "today" }
   ];
   
+  const contest = {id: 5, contestname: "Ongoing contest"}
+  
   return (
     <React.Fragment>
       <NavBar />
-      <CurrentContest />
+      <CurrentContest contest={contest} />
       <PastContests contestList={DUMMY_LIST}/>
     </React.Fragment>
   )
