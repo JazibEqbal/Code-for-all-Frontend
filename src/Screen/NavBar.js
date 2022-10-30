@@ -5,6 +5,9 @@ function NavBar() {
   return (
     <div className={styles.mainBlock}>
     <nav className={styles.navbar}>
+      <Link to="/" className={styles.heading}>
+        Home
+      </Link>
       <Link to="/codechef" className={styles.heading}>
         CodeChef
       </Link>
