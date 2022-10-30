@@ -10,7 +10,7 @@ const CurrentContest = (props) => {
         <React.Fragment>
           <div className={styles.CurrentContestMain}>
             <h2 className={styles.currentHeading}>Ongoing Contest</h2>
-            <h4 className={styles.innerCurrentContestMain}>
+            <h4 className={styles.innerCurrentContestItems}>
               {contest.contestname}
               <Link to={`/question/${contest.id}`} state={{ contest }}>
                 Solutions

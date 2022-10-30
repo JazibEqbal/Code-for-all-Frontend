@@ -11,6 +11,8 @@
     color: #4a4a4a;
     min-height: 200px;
     box-shadow: 0 2px 4px #00000026;
+    background: #f6f8fb;
+    border: 1px solid #d2d9e7;
 }
 .recentContents > h3{
     display: flex;

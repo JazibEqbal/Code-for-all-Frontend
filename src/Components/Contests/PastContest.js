@@ -4,8 +4,8 @@ import styles from "./PastContest.module.css";
 
 const PastContests = (props) => {
   const renderList = props.contestList.map((contest) => (
-    <div className={styles.pastContestMain}>
-      <h4 className={styles.pastContestitems} key={contest.id}>
+    <div>
+      <h4 key={contest.id}>
         {contest.contestname}
         <Link to={`/question/${contest.id}`} state={{ contest }}>
           Solutions
@@ -16,8 +16,10 @@ const PastContests = (props) => {
 
   return (
     <React.Fragment>
-      <h2 className={styles.pastHeading}>Past Contests</h2>
-      <h4 className={styles.pastContestitems}>{renderList}</h4>
+      <div className={styles.pastContestMain}>
+        <h2 className={styles.pastHeading}>Past Contests</h2>
+        <h4 className={styles.pastContestitems}>{renderList}</h4>
+      </div>
     </React.Fragment>
   );
 };
