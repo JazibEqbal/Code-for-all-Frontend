@@ -1,4 +1,5 @@
 import React from "react";
+import Contests from "./Contests";
 import NavBar from "./NavBar";
 import Recent from "./Recent";
 
@@ -7,6 +8,7 @@ function Dashboard() {
     <div>
       <NavBar />
       <Recent />
+      <Contests />
     </div>
   );
 }
