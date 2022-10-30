@@ -11,10 +11,12 @@ function LeetCode() {
     { id: 3, contestname: "Third contest", date: "today" }
   ];
   
+  const contest = null;
+  
   return (
     <React.Fragment>
       <NavBar />
-      <CurrentContest />
+      <CurrentContest contest={contest}/>
       <PastContests contestList={DUMMY_LIST}/>
     </React.Fragment>
   )
