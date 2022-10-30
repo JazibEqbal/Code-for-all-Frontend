@@ -4,7 +4,7 @@ import styles from "./PastContest.module.css";
 
 const PastContests = (props) => {
   const renderList = props.contestList.map((contest) => (
-    <li key={contest.id}>
+    <li className={styles.pastContestitems} key={contest.id}>
       {contest.contestname}
       <Link to={`/question/${contest.id}`} state={{ contest }}>
         Solutions
@@ -16,7 +16,7 @@ const PastContests = (props) => {
     <React.Fragment>
       <div className={styles.pastContestMain}>
         <h2>Past Contests</h2>
-        <ul>{renderList}</ul>
+        <ul className={styles.pastContestitems}>{renderList}</ul>
       </div>
     </React.Fragment>
   );

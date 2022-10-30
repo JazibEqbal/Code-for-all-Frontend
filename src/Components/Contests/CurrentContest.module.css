@@ -1,3 +1,6 @@
 .CurrentContestMain{
-    padding: 40px;
+    margin: 40px;
+}
+.innerCurrentContestMain > p{
+    padding: 7px;
 }
