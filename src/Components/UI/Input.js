@@ -1,7 +1,24 @@
 import React from "react";
 import styles from "./Input.module.css";
 
-const Input = (props) => {
+const Input = props => {
+
+  if (props.type === "radio") {
+    return (
+      <React.Fragment>
+        <label htmlFor={props.id}>
+          {props.label}
+        </label>
+        <input
+          type={props.type}
+          id={props.id}
+          name={props.name}
+          value={props.value}
+        />
+      </React.Fragment>
+    );
+  }
+
   return (
     <div className={styles.control}>
       <label className={styles.headingControl} htmlFor={props.id}>
