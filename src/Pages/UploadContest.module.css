@@ -44,3 +44,6 @@
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
     transition: 300ms ease-in-out all;
 }
+.buttonUploadStyle{
+    text-decoration: none;
+}

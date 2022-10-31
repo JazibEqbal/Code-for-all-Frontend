@@ -51,3 +51,8 @@
 .linkTextButton{
     text-decoration: none;
 }
+.logoutButton{
+    float: right;
+    margin-top: -50px !important;
+    margin-right: 40px !important;
+}
