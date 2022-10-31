@@ -1,0 +1,61 @@
+.loginMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+.loginContainer{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    min-width: 350px;
+    border-radius: 5px;
+    border-top: 3px solid #4a4a4a;
+    border-bottom: 2px solid #4a4a4a;
+    padding: 20px;
+    background-color: #fff;
+    margin-top: 150px;
+    z-index: 1;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.loginContainer:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transition: 300ms ease-in-out all;
+}
+.headingLogin{
+    display: flex;
+    color: #4a4a4a;
+    align-items: center;
+    justify-content: center;
+}
+.loginButton{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+    background-color: #4a4a4a;
+    padding: 8px 16px;
+    color: white;
+    font-size: 1.25rem;
+    cursor: pointer;
+    border: transparent;
+    border-radius: 0.25rem;
+    font-weight: 700;
+    height: 35px;
+    letter-spacing: 1px;
+    overflow: visible;
+    font-family: "Cabin", Sans-Serif;
+    font-size: 100%;
+    line-height: 1.15;
+}
+.loginButton:hover{
+    background-color: #696363;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: 300ms ease-in-out all;
+}
+.loginSubmitButton{
+    text-decoration: none;
+}

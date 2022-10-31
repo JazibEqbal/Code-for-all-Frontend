@@ -1,13 +1,14 @@
 import React from "react";
-import classes from "./Input.module.css";
+import styles from "./Input.module.css";
 
-const Input = props => {
+const Input = (props) => {
   return (
-    <div className={classes.control}>
-      <label htmlFor={props.id}>
+    <div className={styles.control}>
+      <label className={styles.headingControl} htmlFor={props.id}>
         {props.label}
       </label>
       <input
+        className={styles.inputControl}
         type={props.type}
         id={props.id}
         value={props.value}

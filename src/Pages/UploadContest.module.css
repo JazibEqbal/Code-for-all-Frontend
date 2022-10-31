@@ -1,32 +1,28 @@
-.mainBlock{
+.uploadMain {
     display: flex;
-    float: right;
-}
-.navbar{
-    display: flex;
-    justify-content: center;
-    background-color: #fff;
-    height: 72px;
-    padding: 0 56px;
-    z-index: 99;
-    width: 100%;
-    box-shadow: 0 2px 4px #00000026;
-    box-sizing: border-box;
-    letter-spacing: 0;
-    outline: 0;
-}
-.heading{
-    display: flex;
-    text-decoration: none;
+    flex-direction: column;
     align-items: center;
-    padding: 15px;
-    margin-left: 10px;
+    height: 100vh;
+}
+.mainContainerUpload{
+    display:flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 120px;
+    justify-content: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.headingTextUpload{
     color: #4a4a4a;
 }
-.uploadContestButton{
-    display: flex;
+.uploadButtonUpload{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 20px;
-    padding: 8px 8px;
+    padding: 8px 24px;
     color: white;
     font-size: 1.25rem;
     cursor: pointer;
@@ -40,14 +36,10 @@
     font-size: 100%;
     line-height: 1.15;
     background-color: rgb(6, 144, 77);
-    margin-left: 10px;
 }
-.uploadContestButton:hover{
+.uploadButtonUpload:hover{
     background-color: #6aac63;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
     transition: 300ms ease-in-out all;
-}
-.linkTextButton{
-    text-decoration: none;
 }

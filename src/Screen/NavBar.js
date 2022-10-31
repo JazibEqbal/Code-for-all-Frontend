@@ -1,15 +1,13 @@
-import React ,{ useContext } from "react";
+import React, { useContext } from "react";
 import styles from "./NavBar.module.css";
 import { Link } from "react-router-dom";
-import AuthContext from '../Store/auth-context';
+import AuthContext from "../Store/auth-context";
 
 function NavBar() {
-
   const ctx = useContext(AuthContext);
 
   return (
     <React.Fragment>
-      {/* <div className={styles.mainBlock}> */}
       <nav className={styles.navbar}>
         <Link to="/" className={styles.heading}>
           Home
@@ -23,9 +21,11 @@ function NavBar() {
         <Link to="/leetcode" className={styles.heading}>
           LeetCode
         </Link>
-        {ctx.isLoggedIn && <h3>Admin</h3>}
+        {ctx.isLoggedIn && <h3 className={styles.heading}>Admin</h3>}
+        <Link to="/upload/contest" className={styles.linkTextButton}>
+          <button className={styles.uploadContestButton}>Upload Contest</button>
+        </Link>
       </nav>
-      {/* </div> */}
     </React.Fragment>
   );
 }
