@@ -27,7 +27,7 @@ const Questions = props => {
       </h4>
       <p>Solution</p>
       {ctx.isLoggedIn &&
-        <Link to={`/upload/question/${currContest.id}`} state={{ currContest }}>
+        <Link to={`/upload/question/${currContest.id}`} state={{ currContest, question: item }}>
           Upload
         </Link>}
     </div>
@@ -40,6 +40,11 @@ const Questions = props => {
         {currContest.contestname}
       </h2>
       {renderList}
+      <br />
+      {ctx.isLoggedIn &&
+        <Link to={`/upload/question/${currContest.id}`} state={{ currContest, }}>
+          Upload New Question
+        </Link>}
     </React.Fragment>
   );
 };

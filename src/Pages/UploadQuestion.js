@@ -7,6 +7,14 @@ import NavBar from "../Screen/NavBar";
 const UploadQuestion = props => {
     const location = useLocation();
     const currContest = location.state.currContest;
+    const currQues = location.state.question;
+    
+    const RenderQues = () => {
+        if(currQues)
+            return <h3>{currQues.question}</h3>
+        else 
+            return <Input id="question" type="text" label="Question" />
+    }
   return (
     <React.Fragment>
       <NavBar />
@@ -14,7 +22,7 @@ const UploadQuestion = props => {
       <h1>Upload Question Solution</h1>
       <form>
         <h3>{currContest.contestname}</h3>
-        <Input id="question" type="text" label="Question" />
+        <RenderQues />
         <Input id="answer" type="text" label="Answer" />
         <button>Upload</button>
       </form>
