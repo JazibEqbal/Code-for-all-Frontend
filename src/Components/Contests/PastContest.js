@@ -1,13 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./PastContest.module.css";
 
 const PastContests = (props) => {
   const renderList = props.contestList.map((contest) => (
-    <div key={contest.id}>
+    <div key={contest._id}>
       <p className={styles.pastContestitems}>
-        <a href={`/question/${contest.id}`} state={{ contest }}>
+        <Link to={`/question/${contest._id}`} state={{ contest }}>
           {contest.contestname}
-        </a>
+        </Link>
       </p>
     </div>
   ));
@@ -16,7 +17,7 @@ const PastContests = (props) => {
     <React.Fragment>
       <div className={styles.pastContestMain}>
         <h2 className={styles.pastHeading}>Past Contests</h2>
-        <p className={styles.pastText}>{renderList}</p>
+        <h4 className={styles.pastText}>{renderList}</h4>
       </div>
     </React.Fragment>
   );

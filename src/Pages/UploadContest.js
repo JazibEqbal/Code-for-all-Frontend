@@ -1,6 +1,24 @@
 import React, { useReducer, useState } from "react";
+import axios from 'axios';
 import Input from "../Components/UI/Input";
 import NavBar from "../Screen/NavBar";
+
+const saveContest = (dateofcontest, organiser, contestname, ongoing) => {
+  axios({
+    method: 'post',
+    url: `${process.env.REACT_APP_BACKEND_URL}/contest`,
+    headers: {
+      Authorization: process.env.REACT_APP_SUPPORT_TOKEN
+    },
+    data: {
+      dateofcontest,
+      organiser,
+      contestname,
+      ongoing
+    }
+  }).then(res => console.log(res))
+  .catch(e => console.log(e));
+}
 
 const organiserReducer = (state, actions) => {
   if (actions.type === "USER_INPUT") {
@@ -25,6 +43,7 @@ const contestReducer = (state, actions) => {
 const UploadContest = props => {
 
   const [date, setDate] = useState('');
+  const [ongoing, setOngoing] = useState(false);
 
   const [organiserState, dispatchOrganiser] = useReducer(organiserReducer, {
     value: "",
@@ -55,10 +74,15 @@ const UploadContest = props => {
   const dateHandler = event => {
     setDate(event.target.value);
   }
+  
+  const changeHandler = event => {
+    setOngoing(event.target.value === 'ongoing');
+  }
 
   const submithandler = (event) => {
     event.preventDefault();
-    console.log(date,organiserState.value,contestState.value);
+    console.log(date,organiserState.value,contestState.value,ongoing);
+    saveContest(date,organiserState.value,contestState.value,ongoing);
   };
   
   return (
@@ -92,6 +116,10 @@ const UploadContest = props => {
             value={date}
             onChange={dateHandler}
           />
+          <div onChange={changeHandler}>
+            <Input id="upcoming" label="Upcoming" type="radio" value="upcoming" name="ongoing"/>
+            <Input id="upcoming" label="Ongoing" type="radio" value="ongoing" name="ongoing"/>
+          </div>
           <button>Upload</button>
         </form>
       </div>
