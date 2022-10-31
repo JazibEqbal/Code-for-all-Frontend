@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styles from "./CurrentContest.module.css";
 
 const CurrentContest = (props) => {
@@ -9,13 +8,12 @@ const CurrentContest = (props) => {
       return (
         <React.Fragment>
           <div className={styles.CurrentContestMain}>
-            <h2 className={styles.currentHeading}>Ongoing Contest</h2>
-            <h4 className={styles.innerCurrentContestItems}>
-              {contest.contestname}
-              <Link to={`/question/${contest.id}`} state={{ contest }}>
-                Solutions
-              </Link>
-            </h4>
+            <h2 className={styles.ongoingHeading}>Ongoing Contests</h2>
+            <p className={styles.ongoingContestItems}>
+              <a href={`/question/${contest.id}`} state={{ contest }}>
+                {contest.contestname}
+              </a>
+            </p>
           </div>
         </React.Fragment>
       );

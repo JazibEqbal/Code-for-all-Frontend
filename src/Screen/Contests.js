@@ -3,11 +3,14 @@ import styles from "./Contest.module.css";
 function Contests() {
   return (
     <div className={styles.contestsMain}>
+      <h2>Live Contests</h2>
       <div className={styles.contestNames}>
-        <h3>Contest name 1</h3>
-        <h3>Contest name 2</h3>
-        <h3>Contest name 3</h3>
-        <h3>Contest name 4</h3>
+        <p className={styles.contestLinks}>
+          <a href="/contest">Contest 1 link</a>
+        </p>
+        <p className={styles.contestLinks}>
+          <a href="/contest">Contest 2 link</a>
+        </p>
       </div>
     </div>
   );

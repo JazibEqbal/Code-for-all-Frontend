@@ -1,18 +1,36 @@
 .contestsMain{
     display: flex;
-    margin-left: 100px;
-    box-shadow: 0 2px 4px #00000026;
-    margin-top: 20px;
-    width: 56.5%;
-    border-radius: 7px;
-    border: .5px solid gray;
+    flex-direction: column;
+    width: 100%;
     background: #f6f8fb;
-    border: 1px solid #d2d9e7;
-}
-.contestNames > h3{
-    padding: 5px;
-    margin: 10px;
-    font-weight: 500;
-    letter-spacing: 0;
+    margin-bottom: 40px;
+    max-width: 1800px;
+    width: 100%;
+    margin: 0 auto;
     color: #4a4a4a;
+    padding: 20px 0;
+    outline: 0;
+    letter-spacing: 0;
+}
+.contestsMain > h2{
+    width: 100%;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+    margin-left: 100px;
+    text-decoration: underline;
+}
+.contestNames {
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+}
+.contestLinks{
+    margin: 5px;
+}
+.contestLinks  > a{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 4PX;
+    text-decoration: none;
+    color: #363636;
 }
