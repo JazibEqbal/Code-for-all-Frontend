@@ -1,24 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 import CurrentContest from '../Components/Contests/CurrentContest';
 import PastContests from '../Components/Contests/PastContest';
 import NavBar from '../Screen/NavBar';
 
 function CodeForce() {
 
-  const DUMMY_LIST = [
-    { id: 1, contestname: "First contest", date: "today" },
-    { id: 2, contestname: "Second contest", date: "today" },
-    { id: 3, contestname: "Third contest", date: "today" },
-    { id: 4, contestname: "Daily ka contest", date: "today" }
-  ];
+  const [response, setResponse] = useState([]);
+
+  useEffect(() => {
+    async function getData() {
+      const res = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/contest/organiser/codeforces`
+      );
+      setResponse(res.data.contest);
+    }
+    getData();
+  }, []);
   
-  const contest = {id: 5, contestname: "Ongoing contest"}
+  const ongoing = response.filter((item) => item.ongoing === true);
+  const past = response.filter((item) => item.ongoing !== true);
   
   return (
     <React.Fragment>
       <NavBar />
-      <CurrentContest contest={contest} />
-      <PastContests contestList={DUMMY_LIST}/>
+      <CurrentContest contest={ongoing[0]} />
+      <PastContests contestList={past}/>
     </React.Fragment>
   )
 }
