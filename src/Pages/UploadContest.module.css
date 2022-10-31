@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     height: 100vh;
+    color: #4a4a4a;
 }
 .mainContainerUpload{
     display:flex;

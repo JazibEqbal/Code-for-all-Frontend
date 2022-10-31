@@ -2,6 +2,7 @@ import React, { useReducer, useState } from "react";
 import axios from 'axios';
 import Input from "../Components/UI/Input";
 import NavBar from "../Screen/NavBar";
+import styles from "./UploadContest.module.css";
 
 const saveContest = (dateofcontest, organiser, contestname, ongoing) => {
   axios({
@@ -88,8 +89,9 @@ const UploadContest = props => {
   return (
     <React.Fragment>
       <NavBar />
-      <div>
-        <h1>Upload New Contest</h1>
+      <div className={styles.uploadMain}>
+        <div className={styles.mainContainerUpload}>
+        <h1 className={styles.headingTextUpload}>Upload New Contest</h1>
         <form onSubmit={submithandler}>
           <Input
             id="organiser"
@@ -117,11 +119,12 @@ const UploadContest = props => {
             onChange={dateHandler}
           />
           <div onChange={changeHandler}>
-            <Input id="upcoming" label="Upcoming" type="radio" value="upcoming" name="ongoing"/>
-            <Input id="upcoming" label="Ongoing" type="radio" value="ongoing" name="ongoing"/>
+            <Input id="upcoming" type="radio" label="Upcoming" value="upcoming" name="ongoing"/>
+            <Input id="upcoming" type="radio" label="Ongoing"  value="ongoing" name="ongoing"/>
           </div>
-          <button>Upload</button>
+          <button className={styles.uploadButtonUpload}>Upload</button>
         </form>
+      </div>
       </div>
     </React.Fragment>
   );
