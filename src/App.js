@@ -11,6 +11,7 @@ import UploadContest from "./Pages/UploadContest";
 import UploadQuestion from "./Pages/UploadQuestion";
 import AuthContext from "./Store/auth-context";
 import Solution from "./Pages/Solution";
+import Error from "./Screen/Error";
 function App() {
   const ctx = useContext(AuthContext);
 
@@ -18,6 +19,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
+        <Route path="*" element={<Error />}></Route>
           <Route path="/" element={<Dashboard />} />
           <Route path="/codechef" element={<CodeChef />} />
           <Route path="/codeforce" element={<CodeForce />} />
