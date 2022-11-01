@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 
 const AuthContext = React.createContext({
   isLoggedIn: false,
@@ -7,10 +8,22 @@ const AuthContext = React.createContext({
 });
 
 export const AuthContextProvider = props => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const loginHandler = (email, password) => {
-    setIsLoggedIn(true);
+    axios({
+      method: "post",
+      url: `${process.env.REACT_APP_BACKEND_URL}/user/login`,
+      data: {
+        email,
+        password
+      }
+    })
+    .then(res => {
+      if(res.data.user)
+        setIsLoggedIn(true);
+    })
+    .catch(e => console.log(e));
   };
 
   const logoutHandler = () => {
