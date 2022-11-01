@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useLocation, Link } from "react-router-dom";
 import NavBar from "../Screen/NavBar";
 import AuthContext from "../Store/auth-context";
+import Payment from "../Components/UI/Payment";
 
 const Questions = props => {
   const ctx = useContext(AuthContext);
@@ -21,13 +22,13 @@ const Questions = props => {
     }
     getData();
   }, [currContest._id]);
-
+  
   const renderList = response.map(item =>
     <div key={item._id}>
       <h4>
         {item.question}
       </h4>
-      {item.answer ? <p>{item.answer}</p> : <p></p>}
+      <Payment quesNumber={item.number}/>
       {ctx.isLoggedIn &&
         <Link to={`/upload/question/${currContest._id}`} state={{ currContest, question: item }}>
           Upload
