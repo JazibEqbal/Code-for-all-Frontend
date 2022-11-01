@@ -58,8 +58,9 @@ const questionReducer = (state, actions) => {
 
 const UploadQuestion = props => {
   const location = useLocation();
-  const currContest = location.state.currContest;
-  const currQues = location.state.question;
+  
+  const currContest = location.state ? location.state.currContest : null;
+  const currQues = location.state ? location.state.question : null;
 
   const [answerState, dispatchAnswer] = useReducer(answerReducer, {
     value: "",
@@ -120,7 +121,7 @@ const UploadQuestion = props => {
         <h1>Upload Question Solution</h1>
         <form onSubmit={submitHandler}>
           <h3>
-            {currContest.contestname}
+            {currContest && currContest.contestname}
           </h3>
           <RenderQues />
           <Input

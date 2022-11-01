@@ -8,7 +8,8 @@ const AuthContext = React.createContext({
 });
 
 export const AuthContextProvider = props => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const existingToken = localStorage.getItem('token') || false;
+  const [isLoggedIn, setIsLoggedIn] = useState(existingToken);
 
   const loginHandler = (email, password) => {
     axios({
@@ -20,13 +21,16 @@ export const AuthContextProvider = props => {
       }
     })
     .then(res => {
-      if(res.data.user)
+      if(res.data.user){
         setIsLoggedIn(true);
+        localStorage.setItem('token', res.data.token);
+      }
     })
     .catch(e => console.log(e));
   };
 
   const logoutHandler = () => {
+    localStorage.removeItem('token');
     setIsLoggedIn(false);
   };
   
