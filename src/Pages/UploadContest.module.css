@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     height: 100vh;
+    color: #4a4a4a;
 }
 .mainContainerUpload{
     display:flex;
@@ -42,4 +43,7 @@
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
     transition: 300ms ease-in-out all;
+}
+.buttonUploadStyle{
+    text-decoration: none;
 }
