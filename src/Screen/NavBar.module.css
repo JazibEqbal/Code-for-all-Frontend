@@ -57,3 +57,6 @@
     margin-top: -52px !important;
     margin-right: 40px !important;
 }
+.logoutButtonLink{
+    text-decoration: none;
+}

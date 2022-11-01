@@ -5,10 +5,10 @@ import AuthContext from "../Store/auth-context";
 
 function NavBar() {
   const ctx = useContext(AuthContext);
-  
+
   const logoutHandler = () => {
-    ctx.onLogout()
-  }
+    ctx.onLogout();
+  };
 
   return (
     <React.Fragment>
@@ -27,20 +27,24 @@ function NavBar() {
             LeetCode
           </Link>
           {ctx.isLoggedIn && <h3 className={styles.heading}>Admin</h3>}
-          {ctx.isLoggedIn &&
+          {ctx.isLoggedIn && (
             <Link to="/upload/contest" className={styles.linkTextButton}>
               <button className={styles.uploadContestButton}>
                 Upload Contest
               </button>
-            </Link>}
+            </Link>
+          )}
         </nav>
-        {ctx.isLoggedIn &&
-          <button
-            className={`${styles.uploadContestButton} ${styles.logoutButton}`}
-            onClick={logoutHandler}
-          >
-            Log out
-          </button>}
+        {ctx.isLoggedIn && (
+          <Link to='/' className={styles.logoutButtonLink}>
+            <button
+              className={`${styles.uploadContestButton} ${styles.logoutButton}`}
+              onClick={logoutHandler}
+            >
+              Log out
+            </button>
+          </Link>
+        )}
       </div>
     </React.Fragment>
   );
