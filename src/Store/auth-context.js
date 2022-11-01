@@ -30,8 +30,20 @@ export const AuthContextProvider = props => {
   };
 
   const logoutHandler = () => {
-    localStorage.removeItem('token');
-    setIsLoggedIn(false);
+    axios({
+      method: "post",
+      url: `${process.env.REACT_APP_BACKEND_URL}/user/logout`,
+      headers : {
+        Authorization: `JWT ${existingToken}`
+      }
+    })
+    .then(res => {
+      if(res.status === 200){
+        setIsLoggedIn(false);
+        localStorage.removeItem('token');
+      }
+    })
+    .catch(e => console.log(e));
   };
   
   return (
