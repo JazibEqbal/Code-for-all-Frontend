@@ -10,6 +10,7 @@ import LoginPage from "./Pages/LoginPage";
 import UploadContest from "./Pages/UploadContest";
 import UploadQuestion from "./Pages/UploadQuestion";
 import AuthContext from "./Store/auth-context";
+import Solution from "./Pages/Solution";
 function App() {
   const ctx = useContext(AuthContext);
 
@@ -30,6 +31,7 @@ function App() {
               path="/upload/question/:contestid"
               element={<UploadQuestion />}
             />}
+          <Route path="/solution/:questionId" element={<Solution />} />
         </Routes>
       </div>
     </Router>

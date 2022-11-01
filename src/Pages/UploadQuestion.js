@@ -10,7 +10,7 @@ const saveAns = (answer, quesId) => {
     method: "put",
     url: `${process.env.REACT_APP_BACKEND_URL}/questions/solution/${quesId}`,
     headers: {
-      Authorization: process.env.REACT_APP_SUPPORT_TOKEN,
+      Authorization: `JWT ${localStorage.getItem('token')}`,
     },
     data: {
       answer,
@@ -20,16 +20,17 @@ const saveAns = (answer, quesId) => {
     .catch((e) => console.log(e));
 };
 
-const saveQues = (answer, question, contest) => {
+const saveQues = (answer, question, number, contest) => {
   axios({
     method: "post",
     url: `${process.env.REACT_APP_BACKEND_URL}/questions`,
     headers: {
-      Authorization: process.env.REACT_APP_SUPPORT_TOKEN,
+      Authorization: `JWT ${localStorage.getItem('token')}`,
     },
     data: {
       contest,
       question,
+      number,
       answer: answer.size !== 0 ? answer : null,
     },
   })
@@ -53,6 +54,16 @@ const questionReducer = (state, actions) => {
   }
   if (actions.type === "INPUT_BLUR") {
     return { value: state.value, isValid: true };
+  }
+  return { value: "", isValid: false };
+};
+
+const numberReducer = (state, actions) => {
+  if (actions.type === "USER_INPUT") {
+    return { value: actions.val, isValid: actions.val > 0 };
+  }
+  if (actions.type === "INPUT_BLUR") {
+    return { value: state.value, isValid: actions.val > 0 };
   }
   return { value: "", isValid: false };
 };
@@ -88,17 +99,39 @@ const UploadQuestion = (props) => {
   const validateQuestionHandler = () => {
     dispatchQuestion({ type: "INPUT_BLUR" });
   };
+  
+  const [numberState, dispatchNumber] = useReducer(numberReducer, {
+    value: "",
+    isValid: null,
+  });
+
+  const numberChangeHandler = (event) => {
+    dispatchNumber({ type: "USER_INPUT", val: event.target.value });
+  };
+
+  const validateNumberHandler = () => {
+    dispatchNumber({ type: "INPUT_BLUR" });
+  };
 
   const submitHandler = (event) => {
     event.preventDefault();
     if (currQues) saveAns(answerState.value, currQues._id);
-    else saveQues(answerState.value, questionState.value, currContest._id);
+    else saveQues(answerState.value, questionState.value, numberState.value, currContest._id);
   };
 
   const RenderQues = () => {
     if (currQues) return <h3>Q. {currQues.question}</h3>;
     else
       return (
+      <React.Fragment>
+        <Input
+          id="quesnumber"
+          type="number"
+          label="Question Number"
+          onChange={numberChangeHandler}
+          onBlur={validateNumberHandler}
+          value={numberState.value}
+        />
         <Input
           id="question"
           type="text"
@@ -107,6 +140,7 @@ const UploadQuestion = (props) => {
           onBlur={validateQuestionHandler}
           value={questionState.value}
         />
+        </React.Fragment>
       );
   };
 
