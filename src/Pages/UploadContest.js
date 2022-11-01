@@ -90,7 +90,7 @@ const UploadContest = (props) => {
       <NavBar />
       <div className={styles.uploadMain}>
         <div className={styles.mainContainerUpload}>
-          <h1 className={styles.headingTextUpload}>Upload New Contest</h1>
+          <h1>Upload New Contest</h1>
           <form onSubmit={submithandler}>
             <Input
               id="organiser"
@@ -133,9 +133,7 @@ const UploadContest = (props) => {
                 name="ongoing"
               />
             </div>
-            {/* <Link to={`/question/${}`}> */}
               <button className={styles.uploadButtonUpload}>Upload</button>
-            {/* </Link> */}
           </form>
         </div>
       </div>

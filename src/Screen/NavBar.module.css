@@ -1,6 +1,7 @@
 .mainBlock{
     display: flex;
     float: right;
+    z-index: 99;
 }
 .navbar{
     display: flex;
@@ -30,7 +31,7 @@
     color: white;
     font-size: 1.25rem;
     cursor: pointer;
-    border: 1px solid green;
+    border: transparent;
     border-radius: 0.25rem;
     font-weight: 700;
     height: 35px;
@@ -39,11 +40,11 @@
     font-family: "Cabin", Sans-Serif;
     font-size: 100%;
     line-height: 1.15;
-    background-color: rgb(6, 144, 77);
+    background-color: #4a4a4a;
     margin-left: 10px;
 }
 .uploadContestButton:hover{
-    background-color: #6aac63;
+    background-color: #696363;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
     transition: 300ms ease-in-out all;
@@ -53,6 +54,9 @@
 }
 .logoutButton{
     float: right;
-    margin-top: -50px !important;
+    margin-top: -52px !important;
     margin-right: 40px !important;
+}
+.logoutButtonLink{
+    text-decoration: none;
 }

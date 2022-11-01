@@ -1,24 +1,29 @@
-.uploadMain {
+.uploadQuestionsMain {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100vh;
     color: #4a4a4a;
-    background-color: #fffcf4;
+    background-color: #f6f8fb;
     margin-top: 2px !important;
 }
-.mainContainerUpload{
+.mainContainerQuestionUpload{
     display:flex;
     padding: 20px;
+    background-color: #fff;
     flex-direction: column;
     align-items: center;
     margin-top: 120px;
-    background-color: #fff;
     justify-content: center;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
       0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
-.uploadButtonUpload{
+.questionHeadingStyle,
+.contestQuestionStyle{
+    text-decoration: underline;
+    font-weight: 500;
+}
+.questionButtonUpload{
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -27,7 +32,7 @@
     color: white;
     font-size: 1.25rem;
     cursor: pointer;
-    border: 1px solid green;
+    border: transparent;
     border-radius: 0.25rem;
     font-weight: 700;
     height: 35px;
@@ -38,12 +43,9 @@
     line-height: 1.15;
     background-color: #4a4a4a;
 }
-.uploadButtonUpload:hover{
+.questionButtonUpload:hover{
     background-color: #696363;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
     transition: 300ms ease-in-out all;
-}
-.buttonUploadStyle{
-    text-decoration: none;
 }
