@@ -28,11 +28,12 @@ const Questions = (props) => {
     <div key={item._id} className={styles.questionsMain}>
       <div>
       <h3 className={styles.questionsTextStyle}>Q. {item.question}</h3>
-      {item.answer ? (
-        <p className={styles.questionsAnswerStyle}>Solution: {item.answer}</p>
+      {/* {item.answer ? (
+        <p className={styles.questionsAnswerStyle}>Solution:
+        </p>
       ) : (
         <p className={styles.questionsAnswerStyle}></p>
-      )}
+      )} */}
       <Payment quesNumber={item.number} quesId={item._id}/>
       {ctx.isLoggedIn && (
         <Link

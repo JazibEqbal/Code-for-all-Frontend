@@ -4,15 +4,17 @@
     align-items: center;
     color: #4a4a4a;
     background-color: #f6f8fb;
-    padding-bottom: 20px;
     margin-top: 2px !important;
 }
 .questionsTextStyle{
+    display: block;
     margin: 10px;
+    margin-left: auto;
+    font-weight: 400;
+    margin-right: auto;
 }
 .questionsAnswerStyle{
-    display: flex;
-    margin: 0;
+    float: left;
     margin-bottom: 10px;
 }
 .questionsContestNameHeading{
@@ -48,7 +50,7 @@
     margin-top: 10px;
 }
 .horizontalLine{
-    border: .1px solid #4a4a4a !important;
+    border: .1px solid #d5cfcf !important;
     width: 100%;
 }
 .questionUploadButton:hover,
