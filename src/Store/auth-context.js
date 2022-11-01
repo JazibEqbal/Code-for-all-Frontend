@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 
 const AuthContext = React.createContext({
   isLoggedIn: false,
@@ -7,14 +8,42 @@ const AuthContext = React.createContext({
 });
 
 export const AuthContextProvider = props => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const existingToken = localStorage.getItem('token') || false;
+  const [isLoggedIn, setIsLoggedIn] = useState(existingToken);
 
   const loginHandler = (email, password) => {
-    setIsLoggedIn(true);
+    axios({
+      method: "post",
+      url: `${process.env.REACT_APP_BACKEND_URL}/user/login`,
+      data: {
+        email,
+        password
+      }
+    })
+    .then(res => {
+      if(res.data.user){
+        setIsLoggedIn(true);
+        localStorage.setItem('token', res.data.token);
+      }
+    })
+    .catch(e => console.log(e));
   };
 
   const logoutHandler = () => {
-    setIsLoggedIn(false);
+    axios({
+      method: "post",
+      url: `${process.env.REACT_APP_BACKEND_URL}/user/logout`,
+      headers : {
+        Authorization: `JWT ${existingToken}`
+      }
+    })
+    .then(res => {
+      if(res.status === 200){
+        setIsLoggedIn(false);
+        localStorage.removeItem('token');
+      }
+    })
+    .catch(e => console.log(e));
   };
   
   return (

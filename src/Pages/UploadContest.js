@@ -82,7 +82,6 @@ const UploadContest = (props) => {
 
   const submithandler = (event) => {
     event.preventDefault();
-    console.log(date, organiserState.value, contestState.value, ongoing);
     saveContest(date, organiserState.value, contestState.value, ongoing);
   };
 
