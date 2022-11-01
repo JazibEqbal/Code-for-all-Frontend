@@ -3,7 +3,6 @@ import NavBar from "../Screen/NavBar";
 import Input from "../Components/UI/Input";
 import AuthContext from "../Store/auth-context";
 import styles from "./LoginPage.module.css";
-import { Link } from "react-router-dom";
 
 const emailReducer = (state, actions) => {
   if (actions.type === "USER_INPUT") {
@@ -84,9 +83,7 @@ const LoginPage = (props) => {
               value={passwordState.value}
               isValid={passwordState.isValid}
             />
-            <Link to="/" className={styles.loginSubmitButton}>
-              <button className={styles.loginButton}>Submit</button>
-            </Link>
+            <button className={styles.loginButton}>Submit</button>
           </form>
         </div>
       </div>

@@ -3,7 +3,6 @@ import axios from "axios";
 import Input from "../Components/UI/Input";
 import NavBar from "../Screen/NavBar";
 import styles from "./UploadContest.module.css";
-import { Link } from "react-router-dom";
 
 const saveContest = (dateofcontest, organiser, contestname, ongoing) => {
   axios({
@@ -83,7 +82,6 @@ const UploadContest = (props) => {
 
   const submithandler = (event) => {
     event.preventDefault();
-    console.log(date, organiserState.value, contestState.value, ongoing);
     saveContest(date, organiserState.value, contestState.value, ongoing);
   };
 
