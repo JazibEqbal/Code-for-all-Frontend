@@ -7,17 +7,18 @@ const displayRazorpay = async (props) => {
         method: 'post',
         url: `${process.env.REACT_APP_BACKEND_URL}/user/payment`,
         data: {
-            amount : 20 + props.quesNumber*10,
+            amount : 1,
         }
     })
     const options = {
         key: process.env.REACT_APP_YOUR_KEY_ID,
         currency : data.data.currency,
         amount : data.data.amount,
-        description: 'Wallet transaction',
+        description: 'Solution transaction',
         order_id : data.data.id,
         handler: function (response) {
-            // alert('Hello Razorpay ' + response.razorpay_payment_id)
+            localStorage.setItem(props.quesId, true)
+            window.open(`http://localhost:3000/solution/${props.quesId}`)
         },
         prefill : {
             name: 'Payment user',
