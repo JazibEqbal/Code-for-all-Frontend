@@ -36,10 +36,10 @@
     font-family: "Cabin", Sans-Serif;
     font-size: 100%;
     line-height: 1.15;
-    background-color: rgb(6, 144, 77);
+    background-color: #4a4a4a;
 }
 .uploadButtonUpload:hover{
-    background-color: #6aac63;
+    background-color: #696363;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
     transition: 300ms ease-in-out all;
