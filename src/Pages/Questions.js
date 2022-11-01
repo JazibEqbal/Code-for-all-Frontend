@@ -3,6 +3,7 @@ import axios from "axios";
 import { useLocation, Link } from "react-router-dom";
 import NavBar from "../Screen/NavBar";
 import AuthContext from "../Store/auth-context";
+import Payment from "../Components/UI/Payment";
 import styles from "./Questions.module.css";
 
 const Questions = (props) => {
@@ -32,6 +33,7 @@ const Questions = (props) => {
       ) : (
         <p className={styles.questionsAnswerStyle}></p>
       )}
+      <Payment quesNumber={item.number}/>
       {ctx.isLoggedIn && (
         <Link
           to={`/upload/question/${currContest._id}`}
