@@ -3,20 +3,21 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import Input from "../Components/UI/Input";
 import NavBar from "../Screen/NavBar";
+import styles from "./UploadQuestion.module.css";
 
 const saveAns = (answer, quesId) => {
   axios({
     method: "put",
     url: `${process.env.REACT_APP_BACKEND_URL}/questions/solution/${quesId}`,
     headers: {
-      Authorization: process.env.REACT_APP_SUPPORT_TOKEN
+      Authorization: process.env.REACT_APP_SUPPORT_TOKEN,
     },
     data: {
-      answer
-    }
+      answer,
+    },
   })
-    .then(res => console.log(res))
-    .catch(e => console.log(e));
+    .then((res) => console.log(res))
+    .catch((e) => console.log(e));
 };
 
 const saveQues = (answer, question, contest) => {
@@ -24,16 +25,16 @@ const saveQues = (answer, question, contest) => {
     method: "post",
     url: `${process.env.REACT_APP_BACKEND_URL}/questions`,
     headers: {
-      Authorization: process.env.REACT_APP_SUPPORT_TOKEN
+      Authorization: process.env.REACT_APP_SUPPORT_TOKEN,
     },
     data: {
       contest,
       question,
       answer: answer.size !== 0 ? answer : null,
-    }
+    },
   })
-  .then(res => console.log(res))
-  .catch(e => console.log(e));
+    .then((res) => console.log(res))
+    .catch((e) => console.log(e));
 };
 
 const answerReducer = (state, actions) => {
@@ -56,18 +57,18 @@ const questionReducer = (state, actions) => {
   return { value: "", isValid: false };
 };
 
-const UploadQuestion = props => {
+const UploadQuestion = (props) => {
   const location = useLocation();
-  
+
   const currContest = location.state ? location.state.currContest : null;
   const currQues = location.state ? location.state.question : null;
 
   const [answerState, dispatchAnswer] = useReducer(answerReducer, {
     value: "",
-    isValid: null
+    isValid: null,
   });
 
-  const answerChangeHandler = event => {
+  const answerChangeHandler = (event) => {
     dispatchAnswer({ type: "USER_INPUT", val: event.target.value });
   };
 
@@ -77,10 +78,10 @@ const UploadQuestion = props => {
 
   const [questionState, dispatchQuestion] = useReducer(questionReducer, {
     value: "",
-    isValid: null
+    isValid: null,
   });
 
-  const questionChangeHandler = event => {
+  const questionChangeHandler = (event) => {
     dispatchQuestion({ type: "USER_INPUT", val: event.target.value });
   };
 
@@ -88,19 +89,14 @@ const UploadQuestion = props => {
     dispatchQuestion({ type: "INPUT_BLUR" });
   };
 
-  const submitHandler = event => {
+  const submitHandler = (event) => {
     event.preventDefault();
     if (currQues) saveAns(answerState.value, currQues._id);
     else saveQues(answerState.value, questionState.value, currContest._id);
   };
 
   const RenderQues = () => {
-    if (currQues)
-      return (
-        <h3>
-          {currQues.question}
-        </h3>
-      );
+    if (currQues) return <h3>Q. {currQues.question}</h3>;
     else
       return (
         <Input
@@ -117,23 +113,27 @@ const UploadQuestion = props => {
   return (
     <React.Fragment>
       <NavBar />
-      <div>
-        <h1>Upload Question Solution</h1>
-        <form onSubmit={submitHandler}>
-          <h3>
-            {currContest && currContest.contestname}
-          </h3>
-          <RenderQues />
-          <Input
-            id="answer"
-            type="text"
-            label="Answer"
-            onChange={answerChangeHandler}
-            onBlur={validateAnswerHandler}
-            value={answerState.value}
-          />
-          <button>Upload</button>
-        </form>
+      <div className={styles.uploadQuestionsMain}>
+        <div className={styles.mainContainerQuestionUpload}>
+          <h1 className={styles.questionHeadingStyle}>
+            Upload Question Solution
+          </h1>
+          <form onSubmit={submitHandler}>
+            <h3 className={styles.contestQuestionStyle}>
+              {currContest && currContest.contestname}
+            </h3>
+            <RenderQues />
+            <Input
+              id="answer"
+              type="text"
+              label="Solution"
+              onChange={answerChangeHandler}
+              onBlur={validateAnswerHandler}
+              value={answerState.value}
+            />
+            <button className={styles.questionButtonUpload}>Upload</button>
+          </form>
+        </div>
       </div>
     </React.Fragment>
   );

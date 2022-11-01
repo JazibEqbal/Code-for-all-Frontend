@@ -3,9 +3,9 @@
     flex-direction: column;
     align-items: center;
     color: #4a4a4a;
-    background-color: #fffcf4;
+    background-color: #f6f8fb;
     padding-bottom: 20px;
-    margin-top: 4px;
+    margin-top: 2px !important;
 }
 .questionsTextStyle{
     margin: 10px;
@@ -17,7 +17,7 @@
 }
 .questionsContestNameHeading{
     display: flex;
-    margin-top: 100px;
+    margin-top: 50px;
     margin-bottom: 5px;
     text-decoration:underline;
 }
@@ -32,7 +32,6 @@
     font-size: 1.25rem;
     cursor: pointer;
     border: transparent;
-    /* border: transparent; */
     border-radius: 0.25rem;
     font-weight: 500;
     height: 35px;
@@ -42,6 +41,8 @@
     line-height: 1.15;
     background-color: #4a4a4a;
     text-decoration: none;
+    justify-content: center;
+    text-align: center;
 }
 .questionUploadNewQuestionButton{
     margin-top: 10px;
