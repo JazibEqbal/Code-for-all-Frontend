@@ -26,26 +26,19 @@ const Questions = (props) => {
 
   const renderList = response.map((item) => (
     <div key={item._id} className={styles.questionsMain}>
-      <div>
-      <h3 className={styles.questionsTextStyle}>Q. {item.question}</h3>
-      {/* {item.answer ? (
-        <p className={styles.questionsAnswerStyle}>Solution:
-        </p>
-      ) : (
-        <p className={styles.questionsAnswerStyle}></p>
-      )} */}
-      <Payment quesNumber={item.number} quesId={item._id}/>
-      {ctx.isLoggedIn && (
-        <Link
-          to={`/upload/question/${currContest._id}`}
-          state={{ currContest, question: item }}
-          className={styles.questionUploadButton}
-        >
-          Upload
-        </Link>
-      )}
-      <hr className={styles.horizontalLine}/>
-    </div>
+      <div className={styles.questionContainerMain}>
+        <h3 className={styles.questionsTextStyle}>Q. {item.question}</h3>
+        <Payment quesNumber={item.number} quesId={item._id} />
+        {ctx.isLoggedIn && (
+          <Link
+            to={`/upload/question/${currContest._id}`}
+            state={{ currContest, question: item }}
+            className={styles.questionUploadButton}
+          >
+            Upload
+          </Link>
+        )}
+      </div>
     </div>
   ));
 
@@ -53,12 +46,15 @@ const Questions = (props) => {
     <React.Fragment>
       <NavBar />
       <div className={styles.questionsMain}>
-        <h3 className={styles.questionsContestNameHeading}>{currContest.contestname}</h3>
+        <h3 className={styles.questionsContestNameHeading}>
+          {currContest.contestname}
+        </h3>
         {renderList}
         {ctx.isLoggedIn && (
           <Link
             to={`/upload/question/${currContest._id}`}
-            state={{ currContest }} className={styles.questionUploadNewQuestionButton}
+            state={{ currContest }}
+            className={`${styles.questionUploadButton} ${styles.questionNewUploadButton}`}
           >
             Upload New Question
           </Link>

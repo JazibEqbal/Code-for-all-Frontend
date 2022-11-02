@@ -3,6 +3,7 @@ import NavBar from "../Screen/NavBar";
 import Input from "../Components/UI/Input";
 import AuthContext from "../Store/auth-context";
 import styles from "./LoginPage.module.css";
+import { Link , useNavigate } from "react-router-dom";
 
 const emailReducer = (state, actions) => {
   if (actions.type === "USER_INPUT") {
@@ -52,10 +53,12 @@ const LoginPage = (props) => {
   const validatePasswordHandler = () => {
     dispatchPassword({ type: "INPUT_BLUR" });
   };
+  const navigate = useNavigate();
 
   const submitHandler = (event) => {
     event.preventDefault();
     authCtx.onLogin(emailState.value, passwordState.value);
+    navigate("/");
   };
 
   return (
@@ -83,7 +86,7 @@ const LoginPage = (props) => {
               value={passwordState.value}
               isValid={passwordState.isValid}
             />
-            <button className={styles.loginButton}>Submit</button>
+              <button className={styles.loginButton}>Submit</button>
           </form>
         </div>
       </div>

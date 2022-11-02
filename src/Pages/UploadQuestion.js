@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Input from "../Components/UI/Input";
 import NavBar from "../Screen/NavBar";
 import styles from "./UploadQuestion.module.css";
@@ -10,7 +10,7 @@ const saveAns = (answer, quesId) => {
     method: "put",
     url: `${process.env.REACT_APP_BACKEND_URL}/questions/solution/${quesId}`,
     headers: {
-      Authorization: `JWT ${localStorage.getItem('token')}`,
+      Authorization: `JWT ${localStorage.getItem("token")}`,
     },
     data: {
       answer,
@@ -25,7 +25,7 @@ const saveQues = (answer, question, number, contest) => {
     method: "post",
     url: `${process.env.REACT_APP_BACKEND_URL}/questions`,
     headers: {
-      Authorization: `JWT ${localStorage.getItem('token')}`,
+      Authorization: `JWT ${localStorage.getItem("token")}`,
     },
     data: {
       contest,
@@ -99,7 +99,7 @@ const UploadQuestion = (props) => {
   const validateQuestionHandler = () => {
     dispatchQuestion({ type: "INPUT_BLUR" });
   };
-  
+
   const [numberState, dispatchNumber] = useReducer(numberReducer, {
     value: "",
     isValid: null,
@@ -112,34 +112,45 @@ const UploadQuestion = (props) => {
   const validateNumberHandler = () => {
     dispatchNumber({ type: "INPUT_BLUR" });
   };
-
+  const navigate = useNavigate();
   const submitHandler = (event) => {
     event.preventDefault();
     if (currQues) saveAns(answerState.value, currQues._id);
-    else saveQues(answerState.value, questionState.value, numberState.value, currContest._id);
+    else
+      saveQues(
+        answerState.value,
+        questionState.value,
+        numberState.value,
+        currContest._id
+      );
+    navigate(`/question/${currContest._id}`,{
+      state: {
+        currContest,
+      }
+    });
   };
 
   const RenderQues = () => {
     if (currQues) return <h3>Q. {currQues.question}</h3>;
     else
       return (
-      <React.Fragment>
-        <Input
-          id="quesnumber"
-          type="number"
-          label="Question Number"
-          onChange={numberChangeHandler}
-          onBlur={validateNumberHandler}
-          value={numberState.value}
-        />
-        <Input
-          id="question"
-          type="text"
-          label="Question"
-          onChange={questionChangeHandler}
-          onBlur={validateQuestionHandler}
-          value={questionState.value}
-        />
+        <React.Fragment>
+          <Input
+            id="quesnumber"
+            type="number"
+            label="Question Number"
+            onChange={numberChangeHandler}
+            onBlur={validateNumberHandler}
+            value={numberState.value}
+          />
+          <Input
+            id="question"
+            type="text"
+            label="Question"
+            onChange={questionChangeHandler}
+            onBlur={validateQuestionHandler}
+            value={questionState.value}
+          />
         </React.Fragment>
       );
   };

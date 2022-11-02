@@ -1,11 +1,9 @@
 .getSolutionButton{
     display: block;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
-    padding: 4px 7px;
+    margin-left: 40px;
+    width: 100px !important;
     color: white;
+    align-items: center;
     font-size: 1.25rem;
     cursor: pointer;
     border: transparent;
@@ -15,12 +13,12 @@
     letter-spacing: 0px;
     overflow: visible;
     font-family: "Cabin", Sans-Serif;
-    font-size: 100%;
+    font-size: 13px;
     line-height: 1.15;
-    background-color: #4a4a4a;
+    background-color: #696363;
 }
 .getSolutionButton:hover{
-    background-color: #696363;
+    background-color: #4a4a4a;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
     transition: 300ms ease-in-out all;
