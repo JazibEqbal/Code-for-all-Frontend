@@ -7,10 +7,13 @@
     margin-left: auto;
     margin-right: auto;
     width: 967px;
-    margin-top: 20px !important;
     padding: 0.3em 0.5em;
     border: 1px solid #ccc;
+    background-color: #fff;
     box-shadow: 0 4px 5px 2px rgb(0 0 0 / 30%);
+}
+.currentContestTopHead{
+    padding-top: 30px !important;
 }
 .ongoingHeading{
     color: #4a4a4a;

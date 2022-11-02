@@ -9,6 +9,7 @@ const CurrentContest = (props) => {
     if (contest)
       return (
         <React.Fragment>
+          <div className={styles.currentContestTopHead}>
           <div className={styles.CurrentContestMain}>
             <h2 className={styles.ongoingHeading}>Ongoing Contests</h2>
             <p className={styles.ongoingContestItems}>
@@ -16,6 +17,7 @@ const CurrentContest = (props) => {
                 {contest.contestname}
               </Link>
             </p>
+          </div>
           </div>
         </React.Fragment>
       );

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios';
-import CurrentContest from '../Components/Contests/CurrentContest';
-import PastContests from '../Components/Contests/PastContest';
-import NavBar from '../Screen/NavBar';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import CurrentContest from "../Components/Contests/CurrentContest";
+import PastContests from "../Components/Contests/PastContest";
+import NavBar from "../Screen/NavBar";
+import styles from "./CodeForce.module.css";
 
 function CodeForce() {
-
   const [response, setResponse] = useState([]);
 
   useEffect(() => {
@@ -17,17 +17,19 @@ function CodeForce() {
     }
     getData();
   }, []);
-  
+
   const ongoing = response.filter((item) => item.ongoing === true);
   const past = response.filter((item) => item.ongoing !== true);
-  
+
   return (
     <React.Fragment>
       <NavBar />
-      <CurrentContest contest={ongoing[0]} />
-      <PastContests contestList={past}/>
+      <div  className={styles.CodeForceMain}>
+        <CurrentContest contest={ongoing[0]} />
+        <PastContests contestList={past} />
+      </div>
     </React.Fragment>
-  )
+  );
 }
 
-export default CodeForce
+export default CodeForce;
