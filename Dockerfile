@@ -15,4 +15,4 @@ RUN npm run build
 FROM nginx
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /build/build/ /usr/share/nginx/html
-CMD sed -i 's/80/'"$PORT"'/' /etc/nginx/conf.d/default.conf \
+CMD /bin/bash -c sed -i 's/80/'"$PORT"'/' /etc/nginx/conf.d/default.conf \
