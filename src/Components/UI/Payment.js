@@ -7,7 +7,7 @@ const displayRazorpay = async (props) => {
     method: "post",
     url: `${process.env.REACT_APP_BACKEND_URL}/user/payment`,
     data: {
-      amount: 1,
+      amount: 20 + props.quesNumber*10,
     },
   });
   const options = {
@@ -18,7 +18,7 @@ const displayRazorpay = async (props) => {
     order_id: data.data.id,
     handler: function (response) {
       localStorage.setItem(props.quesId, true);
-      window.open(`http://localhost:3000/solution/${props.quesId}`);
+      window.open(`/solution/${props.quesId}`);
     },
     prefill: {
       name: "Payment user",
