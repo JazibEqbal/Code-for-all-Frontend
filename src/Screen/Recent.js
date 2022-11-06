@@ -6,7 +6,7 @@ function Recent() {
     <div className={styles.mainDiv}>
       <div className={styles.recentContainer}>
         <div className={styles.recentContents}>
-          <img src="https://cdn.codechef.com/download/banner/1666227462.jpg" alt="contest" />
+          <img src="https://i.pinimg.com/originals/4d/15/5c/4d155c6f7e5b1c6942059703c403ecaf.jpg" alt="contest" />
         </div>
       </div>
       <div className={styles.advertisement}>

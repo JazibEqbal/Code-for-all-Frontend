@@ -5,8 +5,8 @@ import Input from "../Components/UI/Input";
 import NavBar from "../Screen/NavBar";
 import styles from "./UploadQuestion.module.css";
 
-const saveAns = (answer, quesId) => {
-  axios({
+const saveAns = async (answer, quesId) => {
+  await axios({
     method: "put",
     url: `${process.env.REACT_APP_BACKEND_URL}/questions/solution/${quesId}`,
     headers: {
@@ -16,12 +16,15 @@ const saveAns = (answer, quesId) => {
       answer
     }
   })
+<<<<<<< HEAD
     .then(res => console.log(res))
     .catch(e => console.log(e));
+=======
+>>>>>>> origin
 };
 
-const saveQues = (answer, question, number, contest) => {
-  axios({
+const saveQues = async (answer, question, number, contest) => {
+  await axios({
     method: "post",
     url: `${process.env.REACT_APP_BACKEND_URL}/questions`,
     headers: {
@@ -34,8 +37,11 @@ const saveQues = (answer, question, number, contest) => {
       answer: answer.size !== 0 ? answer : null
     }
   })
+<<<<<<< HEAD
     .then(res => console.log(res))
     .catch(e => console.log(e));
+=======
+>>>>>>> origin
 };
 
 const answerReducer = (state, actions) => {
@@ -113,11 +119,11 @@ const UploadQuestion = props => {
     dispatchNumber({ type: "INPUT_BLUR" });
   };
   const navigate = useNavigate();
-  const submitHandler = event => {
+  const submitHandler = async (event) => {
     event.preventDefault();
-    if (currQues) saveAns(answerState.value, currQues._id);
+    if (currQues) await saveAns(answerState.value, currQues._id);
     else
-      saveQues(
+      await saveQues(
         answerState.value,
         questionState.value,
         numberState.value,
@@ -125,7 +131,7 @@ const UploadQuestion = props => {
       );
     navigate(`/question/${currContest._id}`, {
       state: {
-        currContest
+        contest : currContest,
       }
     });
   };
