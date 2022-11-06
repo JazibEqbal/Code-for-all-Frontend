@@ -18,8 +18,12 @@ function CodeForce() {
     getData();
   }, []);
 
-  const ongoing = response.filter((item) => item.ongoing === true);
-  const past = response.filter((item) => item.ongoing !== true);
+  const ongoing = response.filter(
+    item => new Date(item.dateofcontest) - new Date() > 0
+  );
+  const past = response.filter(
+    item => new Date(item.dateofcontest) - new Date() <= 0
+  );
 
   return (
     <React.Fragment>

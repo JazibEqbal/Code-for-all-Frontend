@@ -26,7 +26,7 @@ export const AuthContextProvider = props => {
         localStorage.setItem('token', res.data.token);
       }
     })
-    .catch(e => console.log(e));
+    .catch(e => e);
   };
 
   const logoutHandler = () => {
@@ -43,7 +43,7 @@ export const AuthContextProvider = props => {
         localStorage.removeItem('token');
       }
     })
-    .catch(e => console.log(e));
+    .catch(e => e);
   };
   
   return (

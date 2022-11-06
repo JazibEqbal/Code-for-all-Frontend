@@ -3,7 +3,7 @@ import NavBar from "../Screen/NavBar";
 import Input from "../Components/UI/Input";
 import AuthContext from "../Store/auth-context";
 import styles from "./LoginPage.module.css";
-import { Link , useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const emailReducer = (state, actions) => {
   if (actions.type === "USER_INPUT") {
