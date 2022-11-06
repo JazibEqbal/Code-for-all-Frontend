@@ -10,14 +10,14 @@ const saveAns = (answer, quesId) => {
     method: "put",
     url: `${process.env.REACT_APP_BACKEND_URL}/questions/solution/${quesId}`,
     headers: {
-      Authorization: `JWT ${localStorage.getItem("token")}`,
+      Authorization: `JWT ${localStorage.getItem("token")}`
     },
     data: {
-      answer,
-    },
+      answer
+    }
   })
-    .then((res) => console.log(res))
-    .catch((e) => console.log(e));
+    .then(res => console.log(res))
+    .catch(e => console.log(e));
 };
 
 const saveQues = (answer, question, number, contest) => {
@@ -25,17 +25,17 @@ const saveQues = (answer, question, number, contest) => {
     method: "post",
     url: `${process.env.REACT_APP_BACKEND_URL}/questions`,
     headers: {
-      Authorization: `JWT ${localStorage.getItem("token")}`,
+      Authorization: `JWT ${localStorage.getItem("token")}`
     },
     data: {
       contest,
       question,
       number,
-      answer: answer.size !== 0 ? answer : null,
-    },
+      answer: answer.size !== 0 ? answer : null
+    }
   })
-    .then((res) => console.log(res))
-    .catch((e) => console.log(e));
+    .then(res => console.log(res))
+    .catch(e => console.log(e));
 };
 
 const answerReducer = (state, actions) => {
@@ -68,7 +68,7 @@ const numberReducer = (state, actions) => {
   return { value: "", isValid: false };
 };
 
-const UploadQuestion = (props) => {
+const UploadQuestion = props => {
   const location = useLocation();
 
   const currContest = location.state ? location.state.currContest : null;
@@ -76,10 +76,10 @@ const UploadQuestion = (props) => {
 
   const [answerState, dispatchAnswer] = useReducer(answerReducer, {
     value: "",
-    isValid: null,
+    isValid: null
   });
 
-  const answerChangeHandler = (event) => {
+  const answerChangeHandler = event => {
     dispatchAnswer({ type: "USER_INPUT", val: event.target.value });
   };
 
@@ -89,10 +89,10 @@ const UploadQuestion = (props) => {
 
   const [questionState, dispatchQuestion] = useReducer(questionReducer, {
     value: "",
-    isValid: null,
+    isValid: null
   });
 
-  const questionChangeHandler = (event) => {
+  const questionChangeHandler = event => {
     dispatchQuestion({ type: "USER_INPUT", val: event.target.value });
   };
 
@@ -102,10 +102,10 @@ const UploadQuestion = (props) => {
 
   const [numberState, dispatchNumber] = useReducer(numberReducer, {
     value: "",
-    isValid: null,
+    isValid: null
   });
 
-  const numberChangeHandler = (event) => {
+  const numberChangeHandler = event => {
     dispatchNumber({ type: "USER_INPUT", val: event.target.value });
   };
 
@@ -113,7 +113,7 @@ const UploadQuestion = (props) => {
     dispatchNumber({ type: "INPUT_BLUR" });
   };
   const navigate = useNavigate();
-  const submitHandler = (event) => {
+  const submitHandler = event => {
     event.preventDefault();
     if (currQues) saveAns(answerState.value, currQues._id);
     else
@@ -123,36 +123,11 @@ const UploadQuestion = (props) => {
         numberState.value,
         currContest._id
       );
-    navigate(`/question/${currContest._id}`,{
+    navigate(`/question/${currContest._id}`, {
       state: {
-        currContest,
+        currContest
       }
     });
-  };
-
-  const RenderQues = () => {
-    if (currQues) return <h3>Q. {currQues.question}</h3>;
-    else
-      return (
-        <React.Fragment>
-          <Input
-            id="quesnumber"
-            type="number"
-            label="Question Number"
-            onChange={numberChangeHandler}
-            onBlur={validateNumberHandler}
-            value={numberState.value}
-          />
-          <Input
-            id="question"
-            type="text"
-            label="Question"
-            onChange={questionChangeHandler}
-            onBlur={validateQuestionHandler}
-            value={questionState.value}
-          />
-        </React.Fragment>
-      );
   };
 
   return (
@@ -167,7 +142,28 @@ const UploadQuestion = (props) => {
             <h3 className={styles.contestQuestionStyle}>
               {currContest && currContest.contestname}
             </h3>
-            <RenderQues />
+            {currQues &&
+              <h3>
+                Q. {currQues.question}
+              </h3>}
+            {currQues === undefined &&
+              <Input
+                id="quesnumber"
+                type="number"
+                label="Question Number"
+                onChange={numberChangeHandler}
+                onBlur={validateNumberHandler}
+                value={numberState.value}
+              />}
+            {currQues === undefined &&
+              <Input
+                id="question"
+                type="text"
+                label="Question"
+                onChange={questionChangeHandler}
+                onBlur={validateQuestionHandler}
+                value={questionState.value}
+              />}
             <Input
               id="answer"
               type="text"
