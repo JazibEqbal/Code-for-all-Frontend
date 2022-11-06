@@ -15,7 +15,6 @@ function Contests() {
     }
     getData();
   }, []);
-  //console.log(process.env.REACT_APP_BACKEND_URL);
   const renderContests = response.map(
     item =>
       !item.ongoing

@@ -3,7 +3,7 @@ import axios from "axios";
 import CurrentContest from "../Components/Contests/CurrentContest";
 import PastContests from "../Components/Contests/PastContest";
 import NavBar from "../Screen/NavBar";
-import styles from './CodeChef.module.css';
+import styles from "./CodeChef.module.css";
 
 const CodeChef = () => {
   const [response, setResponse] = useState([]);
@@ -18,8 +18,12 @@ const CodeChef = () => {
     getData();
   }, []);
 
-  const ongoing = response.filter((item) => item.ongoing === true);
-  const past = response.filter((item) => item.ongoing !== true);
+  const ongoing = response.filter(
+    item => new Date(item.dateofcontest) - new Date() > 0
+  );
+  const past = response.filter(
+    item => new Date(item.dateofcontest) - new Date() <= 0
+  );
 
   return (
     <React.Fragment>
@@ -27,7 +31,7 @@ const CodeChef = () => {
       <div className={styles.CodeChefMain}>
         <CurrentContest contest={ongoing[0]} />
         <PastContests contestList={past} />
-      </div> 
+      </div>
     </React.Fragment>
   );
 };

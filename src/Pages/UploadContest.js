@@ -3,23 +3,25 @@ import axios from "axios";
 import Input from "../Components/UI/Input";
 import NavBar from "../Screen/NavBar";
 import styles from "./UploadContest.module.css";
+import { useNavigate } from "react-router-dom";
 
-const saveContest = (dateofcontest, organiser, contestname, ongoing) => {
-  axios({
+const saveContest = async (dateofcontest, organiser, contestname) => {
+  const res = await axios({
     method: "post",
     url: `${process.env.REACT_APP_BACKEND_URL}/contest`,
     headers: {
-      Authorization: process.env.REACT_APP_SUPPORT_TOKEN,
+      Authorization: `JWT ${localStorage.getItem('token')}`,
     },
     data: {
       dateofcontest,
       organiser,
       contestname,
-      ongoing,
     },
   })
-    .then((res) => console.log(res.data.user._id))
-    .catch((e) => console.log(e));
+  
+  if(res.status === 200){
+    return res.data.user;
+  }
 };
 
 const organiserReducer = (state, actions) => {
@@ -44,7 +46,6 @@ const contestReducer = (state, actions) => {
 
 const UploadContest = (props) => {
   const [date, setDate] = useState("");
-  const [ongoing, setOngoing] = useState(false);
 
   const [organiserState, dispatchOrganiser] = useReducer(organiserReducer, {
     value: "",
@@ -76,13 +77,11 @@ const UploadContest = (props) => {
     setDate(event.target.value);
   };
 
-  const changeHandler = (event) => {
-    setOngoing(event.target.value === "ongoing");
-  };
-
-  const submithandler = (event) => {
+  const navigate = useNavigate();
+  const submithandler = async (event) => {
     event.preventDefault();
-    saveContest(date, organiserState.value, contestState.value, ongoing);
+    const contest = await saveContest(new Date(date), organiserState.value, contestState.value);
+    navigate(`/question/${contest._id}`, { state : { contest } })
   };
 
   return (
@@ -112,27 +111,11 @@ const UploadContest = (props) => {
             />
             <Input
               id="dateofcontest"
-              type="date"
+              type="datetime-local"
               label="Date of Contest"
               value={date}
               onChange={dateHandler}
             />
-            <div onChange={changeHandler}>
-              <Input
-                id="upcoming"
-                type="radio"
-                label="Upcoming"
-                value="upcoming"
-                name="ongoing"
-              />
-              <Input
-                id="upcoming"
-                type="radio"
-                label="Ongoing"
-                value="ongoing"
-                name="ongoing"
-              />
-            </div>
               <button className={styles.uploadButtonUpload}>Upload</button>
           </form>
         </div>
