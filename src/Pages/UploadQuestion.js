@@ -16,11 +16,6 @@ const saveAns = async (answer, quesId) => {
       answer
     }
   })
-<<<<<<< HEAD
-    .then(res => console.log(res))
-    .catch(e => console.log(e));
-=======
->>>>>>> origin
 };
 
 const saveQues = async (answer, question, number, contest) => {
@@ -37,11 +32,6 @@ const saveQues = async (answer, question, number, contest) => {
       answer: answer.size !== 0 ? answer : null
     }
   })
-<<<<<<< HEAD
-    .then(res => console.log(res))
-    .catch(e => console.log(e));
-=======
->>>>>>> origin
 };
 
 const answerReducer = (state, actions) => {
