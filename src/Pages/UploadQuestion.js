@@ -15,7 +15,7 @@ const saveAns = async (answer, quesId) => {
     data: {
       answer
     }
-  })
+  });
 };
 
 const saveQues = async (answer, question, number, contest) => {
@@ -31,7 +31,7 @@ const saveQues = async (answer, question, number, contest) => {
       number,
       answer: answer.size !== 0 ? answer : null
     }
-  })
+  });
 };
 
 const answerReducer = (state, actions) => {
@@ -109,7 +109,7 @@ const UploadQuestion = props => {
     dispatchNumber({ type: "INPUT_BLUR" });
   };
   const navigate = useNavigate();
-  const submitHandler = async (event) => {
+  const submitHandler = async event => {
     event.preventDefault();
     if (currQues) await saveAns(answerState.value, currQues._id);
     else
@@ -121,7 +121,7 @@ const UploadQuestion = props => {
       );
     navigate(`/question/${currContest._id}`, {
       state: {
-        contest : currContest,
+        contest: currContest
       }
     });
   };
@@ -160,10 +160,11 @@ const UploadQuestion = props => {
                 onBlur={validateQuestionHandler}
                 value={questionState.value}
               />}
-            <Input
+            <p><label>Solution</label></p>
+            <textarea
               id="answer"
-              type="text"
-              label="Solution"
+              rows="10"
+              cols="50"
               onChange={answerChangeHandler}
               onBlur={validateAnswerHandler}
               value={answerState.value}
