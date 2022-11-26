@@ -36,6 +36,16 @@
     transform: rotate(360deg);
   }
 } */
-.App{
+.App {
   background-color: #fff;
+}
+
+.Footer {
+  bottom: 0;
+  position: fixed;
+  justify-content: center;
+}
+
+.link{
+  text-decoration: none;
 }
