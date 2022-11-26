@@ -19,7 +19,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-        <Route path="*" element={<Error />}></Route>
+          <Route path="*" element={<Error />} />
           <Route path="/" element={<Dashboard />} />
           <Route path="/codechef" element={<CodeChef />} />
           <Route path="/codeforce" element={<CodeForce />} />
@@ -36,6 +36,13 @@ function App() {
           <Route path="/solution/:questionId" element={<Solution />} />
         </Routes>
       </div>
+      <footer className="Footer">
+        <a className="link" href="https://merchant.razorpay.com/policy/KbEPLZlXoEwkRd/privacy">Privacy</a> | 
+        <a className="link" href="https://merchant.razorpay.com/policy/KbEPLZlXoEwkRd/terms"> TnC</a> | 
+        <a className="link" href="https://merchant.razorpay.com/policy/KbEPLZlXoEwkRd/refund"> Refund Policy</a> | 
+        <a className="link" href="https://merchant.razorpay.com/policy/KbEPLZlXoEwkRd/shipping"> Shipping</a> | 
+        <a className="link" href="https://merchant.razorpay.com/policy/KbEPLZlXoEwkRd/contact_us"> Contact us</a>
+      </footer>
     </Router>
   );
 }
