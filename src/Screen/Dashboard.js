@@ -1,13 +1,13 @@
 import React from "react";
 import Contests from "./Contests";
 import NavBar from "./NavBar";
-import Recent from "./Recent";
+// import Recent from "./Recent";
 
 function Dashboard() {
   return (
     <div>
       <NavBar />
-      <Recent />
+      {/* <Recent /> */}
       <Contests />
     </div>
   );

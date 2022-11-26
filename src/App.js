@@ -1,4 +1,4 @@
-import "./App.css";
+import styles from "./App.module.css";
 import Dashboard from "./Screen/Dashboard";
 import React, { useContext } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -17,7 +17,7 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
+      <div className={styles.App}>
         <Routes>
           <Route path="*" element={<Error />} />
           <Route path="/" element={<Dashboard />} />
@@ -26,22 +26,57 @@ function App() {
           <Route path="/leetcode" element={<LeetCode />} />
           <Route path="/question/:contestid" element={<Questions />} />
           <Route path="/login" element={<LoginPage />} />
-          {ctx.isLoggedIn &&
-            <Route path="/upload/contest" element={<UploadContest />} />}
-          {ctx.isLoggedIn &&
+          {ctx.isLoggedIn && (
+            <Route path="/upload/contest" element={<UploadContest />} />
+          )}
+          {ctx.isLoggedIn && (
             <Route
               path="/upload/question/:contestid"
               element={<UploadQuestion />}
-            />}
+            />
+          )}
           <Route path="/solution/:questionId" element={<Solution />} />
         </Routes>
       </div>
-      <footer className="Footer">
-        <a className="link" href="https://merchant.razorpay.com/policy/KkjpXACsKyUCAV/privacy">Privacy</a> | 
-        <a className="link" href="https://merchant.razorpay.com/policy/KkjpXACsKyUCAV/terms"> TnC</a> | 
-        <a className="link" href="https://merchant.razorpay.com/policy/KkjpXACsKyUCAV/refund"> Refund Policy</a> | 
-        <a className="link" href="https://merchant.razorpay.com/policy/KkjpXACsKyUCAV/shipping"> Shipping</a> | 
-        <a className="link" href="https://merchant.razorpay.com/policy/KkjpXACsKyUCAV/contact_us"> Contact us</a>
+      <footer className={styles.FooterBottom}>
+        <a
+          className={styles.LinkBottom}
+          href="https://merchant.razorpay.com/policy/KbEPLZlXoEwkRd/privacy"
+        >
+          Privacy
+        </a>{" "}
+        |
+        <a
+          className={styles.LinkBottom}
+          href="https://merchant.razorpay.com/policy/KbEPLZlXoEwkRd/terms"
+        >
+          {" "}
+          TnC
+        </a>{" "}
+        |
+        <a
+          className={styles.LinkBottom}
+          href="https://merchant.razorpay.com/policy/KbEPLZlXoEwkRd/refund"
+        >
+          {" "}
+          Refund Policy
+        </a>{" "}
+        |
+        <a
+          className={styles.LinkBottom}
+          href="https://merchant.razorpay.com/policy/KbEPLZlXoEwkRd/shipping"
+        >
+          {" "}
+          Shipping
+        </a>{" "}
+        |
+        <a
+          className={styles.LinkBottom}
+          href="https://merchant.razorpay.com/policy/KbEPLZlXoEwkRd/contact_us"
+        >
+          {" "}
+          Contact us
+        </a>
       </footer>
     </Router>
   );

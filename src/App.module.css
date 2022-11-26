@@ -40,12 +40,20 @@
   background-color: #fff;
 }
 
-.Footer {
-  bottom: 0;
+.FooterBottom {
+  bottom: 20px;
+  display: flex;
   position: fixed;
+  margin-left: 100px;
+  align-items: center;
   justify-content: center;
 }
 
-.link{
+.LinkBottom{
+  display: flex;
+  align-items: center;
   text-decoration: none;
+  color: #4a4a4a;
+  justify-content: center;
+  padding: 10px;
 }
