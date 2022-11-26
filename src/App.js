@@ -37,11 +37,11 @@ function App() {
         </Routes>
       </div>
       <footer className="Footer">
-        <a className="link" href="https://merchant.razorpay.com/policy/KbEPLZlXoEwkRd/privacy">Privacy</a> | 
-        <a className="link" href="https://merchant.razorpay.com/policy/KbEPLZlXoEwkRd/terms"> TnC</a> | 
-        <a className="link" href="https://merchant.razorpay.com/policy/KbEPLZlXoEwkRd/refund"> Refund Policy</a> | 
-        <a className="link" href="https://merchant.razorpay.com/policy/KbEPLZlXoEwkRd/shipping"> Shipping</a> | 
-        <a className="link" href="https://merchant.razorpay.com/policy/KbEPLZlXoEwkRd/contact_us"> Contact us</a>
+        <a className="link" href="https://merchant.razorpay.com/policy/KkjpXACsKyUCAV/privacy">Privacy</a> | 
+        <a className="link" href="https://merchant.razorpay.com/policy/KkjpXACsKyUCAV/terms"> TnC</a> | 
+        <a className="link" href="https://merchant.razorpay.com/policy/KkjpXACsKyUCAV/refund"> Refund Policy</a> | 
+        <a className="link" href="https://merchant.razorpay.com/policy/KkjpXACsKyUCAV/shipping"> Shipping</a> | 
+        <a className="link" href="https://merchant.razorpay.com/policy/KkjpXACsKyUCAV/contact_us"> Contact us</a>
       </footer>
     </Router>
   );
