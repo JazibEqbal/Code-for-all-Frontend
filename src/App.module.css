@@ -41,12 +41,11 @@
 }
 
 .FooterBottom {
-  bottom: 20px;
+  bottom: 0;
   display: flex;
-  position: fixed;
-  margin-left: 100px;
   align-items: center;
   justify-content: center;
+  margin-top: 10px;
 }
 
 .LinkBottom{
